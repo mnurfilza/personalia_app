@@ -38,7 +38,6 @@ function Search() {
 
 const handleChange = e =>{
   var newArr = data.push(e)
-  console.log(newArr);
 }
   return (
     <Container className="container-content" fluid="sm">
