@@ -19,28 +19,28 @@ function Search() {
     })
   },[])
 
+  const options =  list.map(item =>{
+    return{picture:item.picture.thumbnail, value:item.name.title+" "+ item.name.first+" "+ item.name.last, label:item.name.title+" "+ item.name.first+" "+ item.name.last};
+  })
 
-
-  const options = (
+  const formatOptionLabel = ({ picture, value, label,}) => (
     <Container>
-    {list.map((res, index)=>
-      <Row key={index}>
-        <Col sm="12" md={{ size: 6, offset: 3 }}>
-          <img src={res.picture.thumbnail}></img>
-          {res.name.title} {res.name.first}
+      <Row>
+        <Col md="3">
+          <img src={picture}></img>
         </Col>
-
-      </Row>
-    )}
-    </Container>
-  )
-
+        <Col md="7" className="label">
+          {label}
+        </Col>
+    </Row>
+   </Container>
+  );
 
   return (
     <Container className="container-content" fluid="sm">
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
-          <Select placeholder="Pilih Personlia..." className="search-box" components={{options}}/>
+          <Select placeholder="Pilih Personalia..." formatOptionLabel={formatOptionLabel} className="search-box"  options={options} />
         </Col>
       </Row>
     </Container>
