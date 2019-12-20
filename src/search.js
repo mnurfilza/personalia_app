@@ -6,7 +6,7 @@ import List from './List.js';
 
 function Search() {
   const [list, setList] = useState([])
-
+  const [data, setData] = useState([])
 
   useEffect(()=>{
     fetch('https://randomuser.me/api/?results=50')
@@ -19,27 +19,36 @@ function Search() {
   },[])
 
   const options =  list.map(item =>{
-    return{picture:item.picture.thumbnail, value:item.name.title+" "+ item.name.first+" "+ item.name.last, label:item.name.title+" "+ item.name.first+" "+ item.name.last};
+    return {picture:item.picture.thumbnail, value:item.name.first+" "+ item.name.last, label:item.name.first+" "+ item.name.last};
   })
 
   const formatOptionLabel = ({ picture, value, label,}) => (
     <Container>
       <Row>
-        <Col md="3">
+        <Col md="4">
           <img src={picture}></img>
         </Col>
-        <Col md="7" className="label">
+        <Col md="4" className="label">
           {label}
         </Col>
     </Row>
    </Container>
   );
 
+
   return (
     <Container className="container-content" fluid="sm">
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
-          <Select placeholder="Pilih Personalia..." formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
+          <Select placeholder="Pilih Personalia..."  onChange={e => setData(e)} formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col sm="12" md={{ size: 8, offset: 2 }}>
+
+          <List {...data}/>
+
         </Col>
       </Row>
     </Container>
