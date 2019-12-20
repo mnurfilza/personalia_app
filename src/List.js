@@ -3,11 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 
 function List(props) {
-const[data, setData] = useState([])
-if (data.length === 0) {
-  data.splice(0, 1, props)
-}
-console.log(data);
+  console.log(props);
+const {picture, value, label} = props.res
+console.log(props);
+
+// if (data.length === 0) {
+//   data.splice(0, 1, props)
+// }
   return (
     <div className="">
       {props.value}

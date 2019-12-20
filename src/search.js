@@ -5,8 +5,9 @@ import './search.css';
 import List from './List.js';
 
 function Search() {
-  const [list, setList] = useState([])
   const [data, setData] = useState([])
+  const [list, setList] = useState([])
+
 
   useEffect(()=>{
     fetch('https://randomuser.me/api/?results=50')
@@ -35,22 +36,19 @@ function Search() {
    </Container>
   );
 
-
+const handleChange = e =>{
+  var newArr = data.push(e)
+  console.log(newArr);
+}
   return (
     <Container className="container-content" fluid="sm">
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
-          <Select placeholder="Pilih Personalia..."  onChange={e => setData(e)} formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
+          <Select placeholder="Pilih Personalia..."  onChange={handleChange} formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
         </Col>
       </Row>
 
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 2 }}>
 
-          <List {...data}/>
-
-        </Col>
-      </Row>
     </Container>
   );
 }
