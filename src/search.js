@@ -2,8 +2,7 @@ import React, {useState,useEffect} from 'react';
 import Select from 'react-select';
 import { Button,Container,Row,Col } from 'reactstrap';
 import './search.css';
-
-
+import List from './List.js';
 
 function Search() {
   const [list, setList] = useState([])
@@ -40,7 +39,7 @@ function Search() {
     <Container className="container-content" fluid="sm">
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
-          <Select placeholder="Pilih Personalia..." formatOptionLabel={formatOptionLabel} className="search-box"  options={options} />
+          <Select placeholder="Pilih Personalia..." formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
         </Col>
       </Row>
     </Container>
