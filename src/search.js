@@ -9,14 +9,16 @@ function Search() {
   const [list, setList] = useState([])
 
 
+  
+
   useEffect(()=>{
     fetch('https://randomuser.me/api/?results=50')
-    .then(res => {
+    .then(res =>{
       return res.json()
     })
-    .then(response => {
+    .then((response) =>{
       setList(response.results)
-    })
+    })  
   },[])
 
   const options =  list.map(item =>{
@@ -36,9 +38,22 @@ function Search() {
    </Container>
   );
 
-const handleChange = e =>{
-  var newArr = data.push(e)
-}
+
+  function handleChange(e) {
+    setData([...data, e])
+  }
+
+  const editPersonalia = index => {
+    
+  }
+
+  const deletePersonalia = index => {
+    const newData = [...data];
+    newData.splice(index, 1);
+    setData(newData);  
+  }
+
+
   return (
     <Container className="container-content" fluid="sm">
       <Row>
@@ -46,8 +61,13 @@ const handleChange = e =>{
           <Select placeholder="Pilih Personalia..."  onChange={handleChange} formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
         </Col>
       </Row>
-
-
+      <Row>
+        <Col sm="12" md={{ size: 8, offset: 2 }}>
+        {data.map((item, index)=>
+          <List item={item} index={index} key={index} editPersonalia={editPersonalia} deletePersonalia={deletePersonalia}/>
+         )}
+        </Col>
+      </Row>
     </Container>
   );
 }
