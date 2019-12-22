@@ -7,7 +7,9 @@ import List from './List.js';
 function Search() {
   const [data, setData] = useState([])
   const [list, setList] = useState([])
-
+  const [show, setShow] = useState({
+    display:"none"
+  })
 
   
 
@@ -43,9 +45,13 @@ function Search() {
     setData([...data, e])
   }
 
-  const editPersonalia = index => {
-    
+
+  const SavePersonalia = index =>{
+    console.log(index)
   }
+
+  const editPersonalia = () => setShow({display:"block"})
+  
 
   const deletePersonalia = index => {
     const newData = [...data];
@@ -61,10 +67,12 @@ function Search() {
           <Select placeholder="Pilih Personalia..."  onChange={handleChange} formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
         </Col>
       </Row>
+
+      
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
         {data.map((item, index)=>
-          <List item={item} index={index} key={index} editPersonalia={editPersonalia} deletePersonalia={deletePersonalia}/>
+          <List item={item} options={options} show={show} formatOptionLabel={formatOptionLabel} index={index} key={index} editPersonalia={editPersonalia} deletePersonalia={deletePersonalia}  SavePersonalia={SavePersonalia}/>
          )}
         </Col>
       </Row>
