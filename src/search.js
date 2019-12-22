@@ -42,9 +42,7 @@ function Search() {
   );
 
 
-  function handleChange(e) {
-    setData([...data, e])
-  }
+ 
 
 
   const SavePersonalia = index =>{
@@ -71,7 +69,7 @@ function Search() {
     <Container className="container-content" fluid="sm">
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
-          <Select placeholder="Pilih Personalia..."  onChange={handleChange} formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
+          <Select placeholder="Pilih Personalia..."  onChange={e => setData[...data, e]} formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
         </Col>
       </Row>
 
