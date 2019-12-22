@@ -8,7 +8,8 @@ function Search() {
   const [data, setData] = useState([])
   const [list, setList] = useState([])
   const [show, setShow] = useState({
-    display:"none"
+    index:'',
+    style: {display:"none"}
   })
 
   
@@ -50,9 +51,15 @@ function Search() {
     console.log(index)
   }
 
-  const editPersonalia = () => setShow({display:"block"})
-  
-
+  const editPersonalia = (index) => {
+    const newData = [...data]
+    for(var i= 0; i <= newData.length; i++){
+      if(i === index){
+        console.log(i)
+        setShow({index:i, style: {display:"block"}})
+      }
+    }
+  } 
   const deletePersonalia = index => {
     const newData = [...data];
     newData.splice(index, 1);

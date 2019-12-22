@@ -6,12 +6,15 @@ import Select from 'react-select';
 
 function List({item, show, index,editPersonalia, deletePersonalia, formatOptionLabel, options,SavePersonalia}) {
 const {picture, label} = item
+const {i, style} = show
 const [modal, setModal] = useState(false);
 const[hide, setHiden] = useState()
 const toggle = () => setModal(!modal);
 
+
+
   useEffect(()=>{
-    if (show.display !== "none") {
+    if (style.display !== "none") {
       setHiden({display:"none"})
     }
   },[show])
@@ -35,11 +38,12 @@ const toggle = () => setModal(!modal);
           <Button color="danger" onClick={toggle} style={{marginLeft:"5px"}}>Delete</Button>
         </Col>
         
+
         <Col md="8" style={show}>
           <Select  placeholder="Pilih Personalia..." formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
         </Col>
         
-        <Col md="4" style={show}>
+        <Col md="4" style={show }>
           <Button color="primary" onClick={()=> SavePersonalia(index)}>Simpan</Button>{' '}
           <Button color="danger" onClick={toggle} style={{marginLeft:"5px"}}>Delete</Button>
         </Col>
