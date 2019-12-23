@@ -31,24 +31,24 @@ const toggle = () => setModal(!modal);
         <Col md="4" style={hide}>
           {label}
         </Col>
-        
-        
+
+
         <Col md="4" style={hide}>
           <Button color="primary" onClick={() => editPersonalia(index)}>Edit</Button>
           <Button color="danger" onClick={toggle} style={{marginLeft:"5px"}}>Delete</Button>
         </Col>
-        
 
-        <Col md="8" style={show}>
+
+        <Col md="8" style={style}>
           <Select  placeholder="Pilih Personalia..." formatOptionLabel={formatOptionLabel} className="search-box"  options={options}/>
         </Col>
-        
-        <Col md="4" style={show }>
+
+        <Col md="4" style={style}>
           <Button color="primary" onClick={()=> SavePersonalia(index)}>Simpan</Button>{' '}
           <Button color="danger" onClick={toggle} style={{marginLeft:"5px"}}>Delete</Button>
         </Col>
-        
-       
+
+
       </Row>
 
 
@@ -66,7 +66,7 @@ const toggle = () => setModal(!modal);
       </div>
     </Container>
 
-    
+
     )
 }
 
